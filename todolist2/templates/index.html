@@ -1,0 +1,31 @@
+<h1>Todolist</h1>
+
+<ul>
+    {% for n in allitems %}
+        <li>{{ n.content }}
+            <form action="/tododelete/{{ n.id}}/"
+                style="display:inline;"
+                method="post">{% csrf_token %}
+                <input type='submit' value="delete">
+
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<form action="/todoadd/" method="post">{% csrf_token %}
+    <input type="text" name="content">
+    <input type='submit' value="add">
+
+</form>
+
+<!-- <form action="/show/" method="post">{% csrf_token %}
+    <input type="text" name="id_no">
+    <input type='submit' value="display">
+    <ul>
+        {% if allitem %}
+            <li>{{ allitem.content}}</li>
+            <li>{{ allitem.name}}</li>
+        {% endif %}
+    </ul>
+</form> -->
